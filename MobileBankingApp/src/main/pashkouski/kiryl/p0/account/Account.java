@@ -1,6 +1,12 @@
 package main.pashkouski.kiryl.p0.account;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//fields
 	private String accountNumber;
 	private double accountBalance;

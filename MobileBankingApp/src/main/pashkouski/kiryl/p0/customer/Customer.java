@@ -1,13 +1,19 @@
 package main.pashkouski.kiryl.p0.customer;
 
+import java.io.Serializable;
+
 import main.pashkouski.kiryl.p0.account.Account;
 import main.pashkouski.kiryl.p0.exception.AgeLessThanEighteenException;
 
-public class Customer {
+public class Customer implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//fields (variables);
 	private String fullName;
 	private int age;
-	private long ssn;
+	private transient long ssn;
 	private int zipCode;
 	private Account account;
 	
@@ -83,6 +89,6 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [Full Name: " + fullName + ";\nAge: " + age + ";\nSSN: " + ssn + ";\nZIP Code: " + zipCode + "]";
+		return "Customer \n[Full Name: " + fullName + ";\nAge: " + age + ";\nSSN: " + ssn + ";\nZIP Code: " + zipCode + "]";
 	}
 }

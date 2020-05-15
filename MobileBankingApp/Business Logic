@@ -1,0 +1,11 @@
+ * P0_Kiryl Pashkouski_Mobile Banking App
+- person creates an account (name, DOB, SSN, ZIP, phone) <-- data to store;
+- customer creates username, password (check if unique);
+- customer logs into account (check if password matches stored) (log history to store);
+- customer can deposit, transfer, pay (bill alert? probably by date);
+- ---- checks balance;
+- app issues a statement (store sequence of statements) <-- data to store;
+- account history (display chronologically) <-- data to store;
+- account activity (alerts: if pay amount > 75% of remaining balance, net balance < some amount in $ or 5% of  some amount);
+- ATM location based on ZIP code;
+- Joint account;
