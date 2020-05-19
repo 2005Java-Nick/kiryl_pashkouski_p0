@@ -32,18 +32,32 @@ public class InitialTests {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
 	@Test
-	public void GetCustomerReturnsTheSameObject() {
-		CustomerDAOSerialization customerDAO = new CustomerDAOSerialization();
-		Customer customer = new Customer ("Bill", 21, 1231231234, 12345);
-		customerDAO.saveCustomer(customer);
-		Customer customer2 = null;
-		customer2 = customerDAO.getCustomer("Bill");
-		
-		assertTrue(customer2.getFullName().equals(customer.getFullName()));
-		assertTrue(customer2.getAge() == customer.getAge());
-		}
+	public void TestForConstructingFullName () {
+		Customer c = new Customer ();
+		c.setFirstName("Jane");
+		c.setLastName("Doe");
+		c.setFullName();
+		String fullName = c.getFullName();
+		assertEquals("The method returns proper full name:", "Jane Doe", fullName);
+	}
+//	@Test
+//	public void TestForValidAge () {
+//		
+//	}
+
+//	@Test
+//	public void GetCustomerReturnsTheSameObject() {
+//		CustomerDAOSerialization customerDAO = new CustomerDAOSerialization();
+//		Customer customer = new Customer ("Bill", 21, 1231231234, 12345);
+//		customerDAO.saveCustomer(customer);
+//		Customer customer2 = null;
+//		customer2 = customerDAO.getCustomer("Bill");
+//		
+//		assertTrue(customer2.getFullName().equals(customer.getFullName()));
+//		assertTrue(customer2.getAge() == customer.getAge());
+//		}
 	@Test
 	public void checkBalanceReturnsCorrectAmount () {
 		Account account = new Account ();
