@@ -56,8 +56,8 @@ public class CustomerDAOPostgres {
 			}
 			
 			stmt = connection.prepareStatement(SQL_BLANK);
-			stmt.setString(1, "0");
-			stmt.setDouble(2, 0);
+			stmt.setString(1, c.getAccount().getAccountNumber());
+			stmt.setDouble(2, c.getAccount().getAccountBalance());
 			stmt.setInt(3, customerid);
 			stmt.executeUpdate();
 		} catch (SQLException e) {

@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import org.apache.log4j.Logger;
 
 import main.pashkouski.kiryl.p0.account.Account;
-import main.pashkouski.kiryl.p0.exception.AgeLessThanEighteenException;
 
 public class Customer implements Serializable {
 	/**
@@ -14,9 +13,9 @@ public class Customer implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getRootLogger();
+	
 	//fields (variables);
 
-	
 	private String lastName;
 	private String firstName;
 	private String dateOfBirth;
@@ -78,17 +77,6 @@ public class Customer implements Serializable {
 //		return this.fullName;
 //	}
 	
-//	public void setAge (int age) throws AgeLessThanEighteenException {
-//		//logic to check if age > 18;
-//		if (age >= 18) {
-//			this.age = age;
-//		} else {
-//			throw new IllegalArgumentException();
-//		}
-//	}
-//	public int getAge () {
-//		return age;
-//	}
 	public void checkForValidAge () {
 		LocalDate currentDate = LocalDate.now();
 		String dob[] = this.getDateOfBirth().split("-");
