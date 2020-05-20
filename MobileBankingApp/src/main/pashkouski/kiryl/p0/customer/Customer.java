@@ -3,8 +3,6 @@ package main.pashkouski.kiryl.p0.customer;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import org.apache.log4j.Logger;
-
 import main.pashkouski.kiryl.p0.account.Account;
 
 public class Customer implements Serializable {
@@ -12,7 +10,6 @@ public class Customer implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static Logger log = Logger.getRootLogger();
 	
 	//fields (variables);
 

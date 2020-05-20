@@ -1,5 +1,8 @@
 package main.pashkouski.kiryl.p0.main;
 import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
 import main.pashkouski.kiryl.p0.customer.Customer;
 import main.pashkouski.kiryl.p0.dao.CustomerDAOPostgres;
 import main.pashkouski.kiryl.p0.util.FunctionTotalAmount;
@@ -12,6 +15,7 @@ import main.pashkouski.kiryl.p0.util.FunctionTotalAmount;
 public class MobileBankingDriver {
 	private static Scanner scanner = new Scanner (System.in);
 	private static CustomerDAOPostgres customerDAO = new CustomerDAOPostgres();
+	private static Logger log = Logger.getLogger(MobileBankingDriver.class);
 
 	public static void main(String[] args) {
 		
@@ -61,6 +65,7 @@ public class MobileBankingDriver {
 			System.out.println(c.getAccount().checkBalance());
 			
 			customerDAO.saveCustomer(c);
+			log.info("Successfully saved customer");
 		
 		} else {
 			System.out.println("You are existent customer");
@@ -98,6 +103,7 @@ public class MobileBankingDriver {
 		System.out.println(c.getAccount().getAccountNumber());
 		System.out.println(c.getAccount().getAccountBalance());
 		customerDAO.updateCustomer(c);
+		log.info("Successfully updated customer");
 		
 		scanner.close();
 /*
