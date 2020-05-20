@@ -15,16 +15,15 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static Logger log = Logger.getRootLogger();
 	//fields (variables);
-	//private String fullName;
-	//private int age;
+
 	
 	private String lastName;
 	private String firstName;
 	private String dateOfBirth;
 	
 	private String fullName;
-	//private transient long ssn;
-	//private int zipCode;
+	private transient long ssn;
+	private int zipCode;
 	private Account account;
 	
 	
@@ -41,7 +40,7 @@ public class Customer implements Serializable {
 //	}
 
 	
-	//methods
+
 	//methods
 	public void setLastName (String lastName) {
 		this.lastName = lastName;
@@ -104,19 +103,19 @@ public class Customer implements Serializable {
 		}
 	}
 	
-//	public void setSSN (long ssn) {
-//		this.ssn = ssn;
-//	}
-//	public long getSSN () {
-//		return this.ssn;
-//	}
-//	
-//	public void setZipCode (int zipCode) {
-//		this.zipCode = zipCode;
-//	}
-//	public int getZipCOde () {
-//		return this.zipCode;
-//	}
+	public void setSSN (long ssn) {
+		this.ssn = ssn;
+	}
+	public long getSSN () {
+		return this.ssn;
+	}
+	
+	public void setZipCode (int zipCode) {
+		this.zipCode = zipCode;
+	}
+	public int getZipCOde () {
+		return this.zipCode;
+	}
 	
 	// method which opens an account for this customer
 	public void createAccount () {
@@ -142,6 +141,7 @@ public class Customer implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Customer: \n[Full Name: " + fullName + ";\nDate of birth: " + dateOfBirth + "\nAccount:" + account + "]";
+		return "Customer: \n[Full Name: " + this.getFullName() + ";\nDate of birth: " + this.getDateOfBirth() + 
+				"\nSSN: " + this.getSSN() + "\nZip Code: " + this.getZipCOde() + "\nAccount: " + this.getAccount() + "]";
 	}
 }

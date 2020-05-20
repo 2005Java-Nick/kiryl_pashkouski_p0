@@ -22,6 +22,9 @@ public class Account implements Serializable {
 	
 	//methods
 	//setter and getters for variables
+	public void setAccountNumber (String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
 	public void setAccountNumber () {
 		String accountNumber = this.generateAccountNumber();
 		this.accountNumber = accountNumber;

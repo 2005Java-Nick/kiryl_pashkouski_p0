@@ -30,45 +30,49 @@ public class MobileBankingDriver {
 		
 		//Step3: Check for customer in DB
 		Customer c = customerDAO.getCustomer(lastName, firstName);
-		System.out.println("Extracted: " + c);
-		
-		
-		System.out.println("===================================");
-		if (c == null) {
+		if (c.getLastName() == null) {
 			System.out.println("You're new customer");
 			c = new Customer();
+			//Step4: Assign Name
+			c.setFirstName(firstName);
+			c.setLastName(lastName);
+			c.setFullName();
+			System.out.println(c.getFullName());
+			
+			//Step5: Assign BirthDate
+			System.out.println("Enter your DOB (YYYY-mm-dd):");
+			String birthdate = scanner.nextLine();
+			c.setDateOfBirth(birthdate);
+			c.checkForValidAge();
+			System.out.println(c);
+			
+			//Step 6: Assign SSN and ZipCode
+			System.out.println("\nPlease, enter your SSN:");
+			long ssn = scanner.nextLong();
+			c.setSSN(ssn);
+			System.out.println("Please, enter your zipCode:");
+			int zip = scanner.nextInt();
+			c.setZipCode(zip);
+			//Step 7: Create account
+			c.createAccount();
+			System.out.println(c.getAccount());
+			System.out.println("===================================");
+			System.out.println(c.getAccount().checkBalance());
+			
+			customerDAO.saveCustomer(c);
+		
 		} else {
-			System.out.println("Customer:");
-			System.out.println(c.getFirstName());
+			System.out.println("You are existent customer");
+			c.setFullName();
+			System.out.println(c);
 		}
 		
-		//Step4: Assign Name
-		c.setFirstName(firstName);
-		c.setLastName(lastName);
-		c.setFullName();
-		System.out.println(c.getFullName());
-		
-		//Step5: Assign BirthDate
-		System.out.println("Enter your DOB (YYYY-mm-dd):");
-		String birthdate = scanner.nextLine();
-		c.setDateOfBirth(birthdate);
-		c.checkForValidAge();
-		System.out.println(c);
-		
-		
-		
-//		System.out.println("\nPlease, enter your SSN:");
-//		int ssn = scanner.nextInt();
-//		System.out.println("Please, enter your zipCode:");
-//		int zip = scanner.nextInt();
-		
-
-		c.createAccount();
-		System.out.println(c.getAccount());
 		System.out.println("===================================");
-		System.out.println(c.getAccount().checkBalance());
-
 		
+/*
+ * Part II: Operations		
+ */
+
 		String answer = null;
 		double amount = 0;
 		do {
@@ -88,21 +92,15 @@ public class MobileBankingDriver {
 			}
 		} while (!"Exit".equalsIgnoreCase(answer));
 		
-		// Save (Serialize) Customer
-		customerDAO.saveCustomer(c);
+		System.out.println(c.getFullName());
+		System.out.println(c.getDateOfBirth());
+		System.out.println(c.getAccount().getAccountNumber());
+		System.out.println(c.getAccount().getAccountBalance());
+		customerDAO.updateCustomer(c);
+		
 
 		scanner.close();
 		System.out.println("=================================");
 		System.out.println("=================================");
-
-//		System.out.println("Enter name:");
-//		String fullName = scanner.next();
-//		Customer c2 = null;
-//		c2 = customerDAO.getCustomer(fullName);
-//		System.out.println(c2);
-//		System.out.println(c2.getAccount().getAccountBalance());
-//		System.out.println(c2.getAccount().getAccountNumber());
-//
-//		scanner.close();
 	}
 }
