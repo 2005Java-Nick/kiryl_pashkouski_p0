@@ -1,0 +1,15 @@
+WHAT'S NEXT:
+update 0.2.0:
+-- create database; +
+-- connect database to application; +
+
+business logic:
+-- create a log in/out;
+-- persist
+
+technical logic:
+-- add class (like 'Menu') to interact with a customer;
+
+continuous implementations:
+--add tests; +
+--add logging +

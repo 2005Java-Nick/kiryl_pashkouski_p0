@@ -2,8 +2,7 @@ package main.pashkouski.kiryl.p0.main;
 import java.util.Scanner;
 import main.pashkouski.kiryl.p0.customer.Customer;
 import main.pashkouski.kiryl.p0.dao.CustomerDAOPostgres;
-import main.pashkouski.kiryl.p0.dao.CustomerDAOSerialization;
-import main.pashkouski.kiryl.p0.exception.AgeLessThanEighteenException;
+import main.pashkouski.kiryl.p0.util.FunctionTotalAmount;
 
 /**
  * Project_0 for Revature
@@ -14,12 +13,14 @@ public class MobileBankingDriver {
 	private static Scanner scanner = new Scanner (System.in);
 	private static CustomerDAOPostgres customerDAO = new CustomerDAOPostgres();
 
-	public static void main(String[] args) throws AgeLessThanEighteenException {
+	public static void main(String[] args) {
 		
 		System.out.println("Welcome to your Mobile Bank Account");
 		System.out.println("version: 0.2.1"); //version updated on May, 20th;
 		System.out.println("===================================");
-		
+/*
+* Part I: Initialization
+*/
 		//Step1: LastName
 		System.out.println("Enter last name:");
 		String lastName = scanner.nextLine();
@@ -70,8 +71,8 @@ public class MobileBankingDriver {
 		System.out.println("===================================");
 		
 /*
- * Part II: Operations		
- */
+* Part II: Operations		
+*/
 
 		String answer = null;
 		double amount = 0;
@@ -98,8 +99,12 @@ public class MobileBankingDriver {
 		System.out.println(c.getAccount().getAccountBalance());
 		customerDAO.updateCustomer(c);
 		
-
 		scanner.close();
+/*
+* Part III: SQL Function
+*/
+		FunctionTotalAmount function1 = new FunctionTotalAmount();
+		System.out.println("TOTAL AMOUNT OF MONEY INSIDE BANK IS: " + function1.getTotalAmount());
 		System.out.println("=================================");
 		System.out.println("=================================");
 	}
